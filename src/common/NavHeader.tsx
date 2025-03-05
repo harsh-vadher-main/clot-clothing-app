@@ -7,6 +7,7 @@ import {icons} from '../utils/icons';
 type props = {
   backIcon?: any;
   midText: string;
+  style?: string|number
   //   navigation : NativeStackNavigationProp<RootStackParams,'notification'>
 };
 const NavHeader = ({midText}: props) => {

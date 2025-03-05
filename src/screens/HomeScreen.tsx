@@ -58,21 +58,18 @@ const itemList2 = [
     image: require('../assets/images/mainlist1.png'),
     name: "Men's Harrington Jacket",
     price: '$148.00',
-    favourite: false,
   },
   {
     id: 12,
     image: require('../assets/images/mainlist2.png'),
     name: "Max Cirro Men's Slides",
     price: '$55.00',
-    favourite: false,
   },
   {
     id: 13,
     image: require('../assets/images/mainlist3.png'),
     name: "Men's Coaches Jacket",
     price: '$66.97',
-    favourite: false,
   },
 ];
 
@@ -81,19 +78,19 @@ const nextData = [
     id: 1,
     image: require('../assets/images/homebottom1.png'),
     name: "Men's Harrington Jacket",
-    is_favourite: false,
+    price: '$148.00',
   },
   {
     id: 2,
     image: require('../assets/images/homebottom2.png'),
     name: "Men's CottonJacket",
-    is_favourite: false,
+    price: '$55.00',
   },
   {
     id: 3,
     image: require('../assets/images/homebottom3.png'),
     name: "Men's Nike Trousers",
-    is_favourite: false,
+    price: '$66.97',
   },
 ];
 
@@ -159,7 +156,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('wishlist')}>
               <SvgXml xml={icons().HomeCart} />
             </TouchableOpacity>
           </View>
@@ -253,7 +250,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
             <Text style={styles.seeAllText}>See All</Text>
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={{marginBottom: 10}}>
           <FlatList
             data={nextData}
             horizontal
@@ -276,6 +273,9 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
                   <Image source={item.image} style={styles.mainImageList} />
                   <View>
                     <Text style={styles.mainItemName}>{item.name}</Text>
+                  </View>
+                  <View>
+                    <Text style={styles.itemPrice}>{item.price}</Text>
                   </View>
                 </View>
               );

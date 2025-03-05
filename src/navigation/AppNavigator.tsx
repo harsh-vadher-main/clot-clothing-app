@@ -19,6 +19,11 @@ import OrderMain from '../screens/Orders/OrderMain';
 import OrderCategory from '../screens/Orders/OrderCategory';
 import OrderInside from '../screens/Orders/OrderInside';
 import ProductMainScreen from '../screens/Products/ProductMainScreen';
+import Address from '../screens/Profile/Address';
+import Payment from '../screens/Profile/Payment';
+import NewCard from '../screens/Profile/NewCard';
+import NewAddress from '../screens/Profile/NewAddress';
+import WishList from '../screens/Profile/WishList';
 export type RootStackParams = {
   splash: undefined;
   SignUp: undefined;
@@ -39,6 +44,11 @@ export type RootStackParams = {
   orderCategory: undefined;
   orderInside: undefined;
   productmainscreen: undefined;
+  address: undefined;
+  payment: undefined;
+  newcard: undefined;
+  newaddress: undefined;
+  wishlist: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -63,6 +73,11 @@ const AppNavigator = () => {
         <RootStack.Screen name="categories" component={Categories} />
         <RootStack.Screen name="hoodies" component={Hoodie} />
         <RootStack.Screen name="notification" component={Mainscreen} />
+        <RootStack.Screen name="address" component={Address} />
+        <RootStack.Screen name="payment" component={Payment} />
+        <RootStack.Screen name="newcard" component={NewCard} />
+        <RootStack.Screen name="newaddress" component={NewAddress} />
+        <RootStack.Screen name="wishlist" component={WishList} />
         <RootStack.Screen
           name="productmainscreen"
           component={ProductMainScreen}
@@ -94,6 +109,18 @@ export const OrderNavigator = () => {
       <RootStack.Screen name="order" component={OrderMain} />
       <RootStack.Screen name="orderCategory" component={OrderCategory} />
       <RootStack.Screen name="orderInside" component={OrderInside} />
+    </RootStack.Navigator>
+  );
+};
+
+export const ProfileNavigator = () => {
+  return (
+    <RootStack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="profile">
+      <RootStack.Screen name="profile" component={Profile} />
+      <RootStack.Screen name="address" component={Address} />
+      <RootStack.Screen name="payment" component={Payment} />
     </RootStack.Navigator>
   );
 };
