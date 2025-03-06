@@ -77,6 +77,13 @@ const Payment = ({navigation}: PaymentProps) => {
         <Text style={styles.paypalText}>Paypal</Text>
         <PayPalCard />
       </View>
+      <View style={styles.mainView}>
+        <TouchableOpacity onPress={() => navigation.navigate('newcard')}>
+          <View style={styles.mainButtonView}>
+            <Text style={styles.addAddressText}>Add Card</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -146,5 +153,26 @@ const styles = StyleSheet.create({
     fontFamily: FONTFAMILY.Montserrat_Regular,
     marginVertical: 25,
     marginLeft: 12,
+  },
+  mainView: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: 80,
+  },
+  mainButtonView: {
+    width: '85%',
+    height: 50,
+    backgroundColor: COLORS.purple,
+    marginHorizontal: 25,
+    marginVertical: 15,
+    borderRadius: 15,
+    justifyContent: 'center',
+  },
+  addAddressText: {
+    textAlign: 'center',
+    fontFamily: FONTFAMILY.Montserrat_Medium,
+    fontSize: FONTSIZE.size_14,
+    color: COLORS.white,
   },
 });

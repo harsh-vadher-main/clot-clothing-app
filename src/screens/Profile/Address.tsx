@@ -48,7 +48,14 @@ const Address = ({navigation}: AdrressProps) => {
         </View>
       </View>
       <AddressCard />
-      <AddressCard1 onPress={() => navigation.navigate('newaddress')} />
+      <AddressCard1 />
+      <View style={styles.mainView}>
+        <TouchableOpacity onPress={() => navigation.navigate('newaddress')}>
+          <View style={styles.mainButtonView}>
+            <Text style={styles.addAddressText}>Add Address</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
@@ -93,5 +100,26 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  mainView: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: 80,
+  },
+  mainButtonView: {
+    width: '85%',
+    height: 50,
+    backgroundColor: COLORS.purple,
+    marginHorizontal: 25,
+    marginVertical: 15,
+    borderRadius: 15,
+    justifyContent: 'center',
+  },
+  addAddressText: {
+    textAlign: 'center',
+    fontFamily: FONTFAMILY.Montserrat_Medium,
+    fontSize: FONTSIZE.size_14,
+    color : COLORS.white
   },
 });

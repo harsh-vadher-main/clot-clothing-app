@@ -1,8 +1,8 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../navigation/AppNavigator';
-import {COLORS, FONTFAMILY, FONTSIZE} from '../theme/Theme';
+import {COLORS, FONTFAMILY,} from '../theme/Theme';
 
 interface SplashScreenProps {
   navigation: NativeStackNavigationProp<RootStackParams, 'splash'>;
