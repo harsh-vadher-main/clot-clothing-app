@@ -3,7 +3,6 @@ import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../navigation/AppNavigator';
-import NavHeader from '../../common/NavHeader';
 import {SvgXml} from 'react-native-svg';
 import {icons} from '../../utils/icons';
 import {COLORS, FONTFAMILY, FONTSIZE} from '../../theme/Theme';
@@ -120,6 +119,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: FONTFAMILY.Montserrat_Medium,
     fontSize: FONTSIZE.size_14,
-    color : COLORS.white
+    color: COLORS.white,
   },
 });
