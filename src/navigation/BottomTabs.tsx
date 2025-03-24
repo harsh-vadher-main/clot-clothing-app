@@ -7,14 +7,13 @@ import {SvgXml} from 'react-native-svg';
 import {icons} from '../utils/icons';
 import Profile from '../screens/Profile';
 import {NotificatioNavigator, OrderNavigator} from './AppNavigator';
-import OrderMain from '../screens/Orders/OrderMain';
 
 const Tab = createBottomTabNavigator();
 const BottomTabs = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="homescreen"
+        name="Home"
         component={HomeScreen}
         options={{
           headerShown: false,
@@ -30,7 +29,7 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="notification"
+        name="Notification"
         component={NotificatioNavigator}
         options={{
           headerShown: false,
@@ -46,7 +45,7 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="cart"
+        name="Order"
         component={OrderNavigator}
         options={{
           headerShown: false,
@@ -62,7 +61,7 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="profile"
+        name="Profile"
         component={Profile}
         options={{
           headerShown: false,

@@ -7,7 +7,9 @@ interface TextInputProps {
   secureTextEntry?: boolean;
   boxstyle: any;
   textinputstyle: any;
-  keyboardtype ?: any;
+  keyboardtype?: any;
+  value?: any;
+  onChangeText?: any;
 }
 const TextInputCard = ({
   placeHolder,
@@ -15,6 +17,8 @@ const TextInputCard = ({
   textinputstyle,
   secureTextEntry,
   keyboardtype,
+  value,
+  onChangeText,
 }: TextInputProps) => {
   return (
     <View style={[boxstyle, styles.box]}>
@@ -24,6 +28,8 @@ const TextInputCard = ({
         style={textinputstyle}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardtype}
+        value={value}
+        onChangeText={onChangeText}
       />
     </View>
   );

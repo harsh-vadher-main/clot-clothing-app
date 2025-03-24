@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
   },
   suggestionsContainer: {
     position: 'absolute',
-    top: 5,
+    top: 20,
     width: '100%',
     backgroundColor: 'white',
     borderRadius: 5,

@@ -9,6 +9,7 @@ import {
   FlatList,
   Pressable,
   ScrollView,
+  Alert,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -18,12 +19,24 @@ import {icons} from '../utils/icons';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParams} from '../navigation/AppNavigator';
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  toggleWishlist,
+} from '../redux/features/cartSlice';
+import {RootState} from '../redux/store';
 
 interface HomeScreenProps {
   navigation: NativeStackNavigationProp<RootStackParams, 'homescreen'>;
+  item: Item;
 }
 type RBSheet = any;
 const data = ['Men', 'Women', 'Kids'];
+export interface Item {
+  id: number;
+  image: any;
+  name: string;
+  price: string;
+}
 const itemList = [
   {
     id: 1,
@@ -52,7 +65,7 @@ const itemList = [
   },
 ];
 
-const itemList2 = [
+export const itemList2: Item[] = [
   {
     id: 11,
     image: require('../assets/images/mainlist1.png'),
@@ -94,10 +107,10 @@ const nextData = [
   },
 ];
 
-const HomeScreen = ({navigation}: HomeScreenProps) => {
+const HomeScreen = ({navigation, item}: HomeScreenProps) => {
   const [favourites, setFavourites] = useState<number[]>([]);
   const [favouritesNext, setFavouritesNext] = useState<number[]>([]);
-  // const [userInput, setUserInput] = useState<string>('');
+  const dispatch = useDispatch();
 
   const handleFavourites = (id: number): void => {
     if (favourites.includes(id)) {
@@ -113,6 +126,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
       setFavouritesNext([...favouritesNext, id]);
     }
   };
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
 
   // const [itemList2Data, setItemList2Data] = useState(itemList2);
   // const [nextDataData, setNextDataData] = useState(nextData);
@@ -208,6 +222,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
             <Text style={styles.seeAllText}>See All</Text>
           </TouchableOpacity>
         </View>
+
         <View>
           <FlatList
             data={itemList2}
@@ -215,16 +230,21 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
             showsHorizontalScrollIndicator={false}
             keyExtractor={item => String(item.id)}
             renderItem={({item}) => {
+              const isWishlisted = wishlistItems.some(
+                wishlistItem => wishlistItem.id === item.id,
+              );
               return (
                 <TouchableOpacity
                   onPress={() => navigation.navigate('productmainscreen')}>
                   <View style={styles.flatListView2}>
                     <View style={styles.favouriteButton}>
                       <TouchableOpacity
-                        onPress={() => handleFavourites(item.id)}>
+                        onPress={() => {
+                          dispatch(toggleWishlist(item));
+                        }}>
                         <SvgXml
                           xml={
-                            favourites.includes(item.id)
+                            isWishlisted
                               ? icons().filledheart
                               : icons().blankheart
                           }

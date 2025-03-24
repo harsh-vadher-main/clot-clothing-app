@@ -33,10 +33,12 @@ const WishList = ({navigation}: WishListProps) => {
         <View style={styles.itemMain}>
           <View style={styles.itemView}>
             <SvgXml xml={icons().blankheartbig} style={styles.heartIcon} />
-            <View style={styles.MainText}>
-              <Text style={styles.boldText}>My Favourite </Text>
-              <Text style={styles.productCount}>12 Products</Text>
-            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('favourites')}>
+              <View style={styles.MainText}>
+                <Text style={styles.boldText}>My Favourite </Text>
+                <Text style={styles.productCount}>12 Products</Text>
+              </View>
+            </TouchableOpacity>
             <SvgXml xml={icons().next} style={styles.nextIcon} />
           </View>
           <View style={styles.itemView1}>

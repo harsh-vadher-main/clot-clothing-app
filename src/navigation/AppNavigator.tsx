@@ -24,6 +24,7 @@ import Payment from '../screens/Profile/Payment';
 import NewCard from '../screens/Profile/NewCard';
 import NewAddress from '../screens/Profile/NewAddress';
 import WishList from '../screens/Profile/WishList';
+import MyFavourites from '../screens/MyFavourites';
 export type RootStackParams = {
   splash: undefined;
   SignUp: undefined;
@@ -49,6 +50,7 @@ export type RootStackParams = {
   newcard: undefined;
   newaddress: undefined;
   wishlist: undefined;
+  favourites:undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -78,6 +80,7 @@ const AppNavigator = () => {
         <RootStack.Screen name="newcard" component={NewCard} />
         <RootStack.Screen name="newaddress" component={NewAddress} />
         <RootStack.Screen name="wishlist" component={WishList} />
+        <RootStack.Screen name='favourites' component={MyFavourites} />
         <RootStack.Screen
           name="productmainscreen"
           component={ProductMainScreen}
